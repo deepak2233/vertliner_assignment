@@ -1,0 +1,210 @@
+Model: "model_4"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_5 (InputLayer)           [(None, 256, 256, 3  0           []                               
+                                )]                                                                
+                                                                                                  
+ conv2d_60 (Conv2D)             (None, 256, 256, 64  1792        ['input_5[0][0]']                
+                                )                                                                 
+                                                                                                  
+ batch_normalization_56 (BatchN  (None, 256, 256, 64  256        ['conv2d_60[0][0]']              
+ ormalization)                  )                                                                 
+                                                                                                  
+ conv2d_61 (Conv2D)             (None, 256, 256, 64  36928       ['batch_normalization_56[0][0]'] 
+                                )                                                                 
+                                                                                                  
+ batch_normalization_57 (BatchN  (None, 256, 256, 64  256        ['conv2d_61[0][0]']              
+ ormalization)                  )                                                                 
+                                                                                                  
+ max_pooling2d_12 (MaxPooling2D  (None, 128, 128, 64  0          ['batch_normalization_57[0][0]'] 
+ )                              )                                                                 
+                                                                                                  
+ dropout_12 (Dropout)           (None, 128, 128, 64  0           ['max_pooling2d_12[0][0]']       
+                                )                                                                 
+                                                                                                  
+ conv2d_62 (Conv2D)             (None, 128, 128, 12  73856       ['dropout_12[0][0]']             
+                                8)                                                                
+                                                                                                  
+ batch_normalization_58 (BatchN  (None, 128, 128, 12  512        ['conv2d_62[0][0]']              
+ ormalization)                  8)                                                                
+                                                                                                  
+ conv2d_63 (Conv2D)             (None, 128, 128, 12  147584      ['batch_normalization_58[0][0]'] 
+                                8)                                                                
+                                                                                                  
+ batch_normalization_59 (BatchN  (None, 128, 128, 12  512        ['conv2d_63[0][0]']              
+ ormalization)                  8)                                                                
+                                                                                                  
+ max_pooling2d_13 (MaxPooling2D  (None, 64, 64, 128)  0          ['batch_normalization_59[0][0]'] 
+ )                                                                                                
+                                                                                                  
+ dropout_13 (Dropout)           (None, 64, 64, 128)  0           ['max_pooling2d_13[0][0]']       
+                                                                                                  
+ conv2d_64 (Conv2D)             (None, 64, 64, 256)  295168      ['dropout_13[0][0]']             
+                                                                                                  
+ batch_normalization_60 (BatchN  (None, 64, 64, 256)  1024       ['conv2d_64[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ conv2d_65 (Conv2D)             (None, 64, 64, 256)  590080      ['batch_normalization_60[0][0]'] 
+                                                                                                  
+ batch_normalization_61 (BatchN  (None, 64, 64, 256)  1024       ['conv2d_65[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ max_pooling2d_14 (MaxPooling2D  (None, 32, 32, 256)  0          ['batch_normalization_61[0][0]'] 
+ )                                                                                                
+                                                                                                  
+ dropout_14 (Dropout)           (None, 32, 32, 256)  0           ['max_pooling2d_14[0][0]']       
+                                                                                                  
+ conv2d_66 (Conv2D)             (None, 32, 32, 512)  1180160     ['dropout_14[0][0]']             
+                                                                                                  
+ batch_normalization_62 (BatchN  (None, 32, 32, 512)  2048       ['conv2d_66[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ conv2d_67 (Conv2D)             (None, 32, 32, 512)  2359808     ['batch_normalization_62[0][0]'] 
+                                                                                                  
+ batch_normalization_63 (BatchN  (None, 32, 32, 512)  2048       ['conv2d_67[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ up_sampling2d_12 (UpSampling2D  (None, 64, 64, 512)  0          ['batch_normalization_63[0][0]'] 
+ )                                                                                                
+                                                                                                  
+ concatenate_12 (Concatenate)   (None, 64, 64, 768)  0           ['up_sampling2d_12[0][0]',       
+                                                                  'batch_normalization_61[0][0]'] 
+                                                                                                  
+ conv2d_68 (Conv2D)             (None, 64, 64, 256)  1769728     ['concatenate_12[0][0]']         
+                                                                                                  
+ batch_normalization_64 (BatchN  (None, 64, 64, 256)  1024       ['conv2d_68[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ conv2d_69 (Conv2D)             (None, 64, 64, 256)  590080      ['batch_normalization_64[0][0]'] 
+                                                                                                  
+ batch_normalization_65 (BatchN  (None, 64, 64, 256)  1024       ['conv2d_69[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ up_sampling2d_13 (UpSampling2D  (None, 128, 128, 25  0          ['batch_normalization_65[0][0]'] 
+ )                              6)                                                                
+                                                                                                  
+ concatenate_13 (Concatenate)   (None, 128, 128, 38  0           ['up_sampling2d_13[0][0]',       
+                                4)                                'batch_normalization_59[0][0]'] 
+                                                                                                  
+ conv2d_70 (Conv2D)             (None, 128, 128, 12  442496      ['concatenate_13[0][0]']         
+                                8)                                                                
+                                                                                                  
+ batch_normalization_66 (BatchN  (None, 128, 128, 12  512        ['conv2d_70[0][0]']              
+ ormalization)                  8)                                                                
+                                                                                                  
+ conv2d_71 (Conv2D)             (None, 128, 128, 12  147584      ['batch_normalization_66[0][0]'] 
+                                8)                                                                
+                                                                                                  
+ batch_normalization_67 (BatchN  (None, 128, 128, 12  512        ['conv2d_71[0][0]']              
+ ormalization)                  8)                                                                
+                                                                                                  
+ up_sampling2d_14 (UpSampling2D  (None, 256, 256, 12  0          ['batch_normalization_67[0][0]'] 
+ )                              8)                                                                
+                                                                                                  
+ concatenate_14 (Concatenate)   (None, 256, 256, 19  0           ['up_sampling2d_14[0][0]',       
+                                2)                                'batch_normalization_57[0][0]'] 
+                                                                                                  
+ conv2d_72 (Conv2D)             (None, 256, 256, 64  110656      ['concatenate_14[0][0]']         
+                                )                                                                 
+                                                                                                  
+ batch_normalization_68 (BatchN  (None, 256, 256, 64  256        ['conv2d_72[0][0]']              
+ ormalization)                  )                                                                 
+                                                                                                  
+ conv2d_73 (Conv2D)             (None, 256, 256, 64  36928       ['batch_normalization_68[0][0]'] 
+                                )                                                                 
+                                                                                                  
+ batch_normalization_69 (BatchN  (None, 256, 256, 64  256        ['conv2d_73[0][0]']              
+ ormalization)                  )                                                                 
+                                                                                                  
+ conv2d_74 (Conv2D)             (None, 256, 256, 6)  390         ['batch_normalization_69[0][0]'] 
+                                                                                                  
+==================================================================================================
+Total params: 7,794,502
+Trainable params: 7,788,870
+Non-trainable params: 5,632
+__________________________________________________________________________________________________
+None
+Training the model...
+Epoch 1/50
+14/14 [==============================] - ETA: 0s - loss: 1.5975 - accuracy: 0.5114
+Epoch 1: val_loss improved from inf to 124.30138, saving model to best_model.h5
+14/14 [==============================] - 56s 4s/step - loss: 1.5975 - accuracy: 0.5114 - val_loss: 124.3014 - val_accuracy: 0.0660 - lr: 0.0010
+Epoch 2/50
+14/14 [==============================] - ETA: 0s - loss: 1.2404 - accuracy: 0.6175
+Epoch 2: val_loss improved from 124.30138 to 52.56083, saving model to best_model.h5
+14/14 [==============================] - 53s 4s/step - loss: 1.2404 - accuracy: 0.6175 - val_loss: 52.5608 - val_accuracy: 0.0322 - lr: 0.0010
+Epoch 3/50
+14/14 [==============================] - ETA: 0s - loss: 1.0928 - accuracy: 0.6532
+Epoch 3: val_loss improved from 52.56083 to 20.88307, saving model to best_model.h5
+14/14 [==============================] - 51s 4s/step - loss: 1.0928 - accuracy: 0.6532 - val_loss: 20.8831 - val_accuracy: 0.0982 - lr: 0.0010
+Epoch 4/50
+14/14 [==============================] - ETA: 0s - loss: 1.1921 - accuracy: 0.5988
+Epoch 4: val_loss improved from 20.88307 to 13.76876, saving model to best_model.h5
+14/14 [==============================] - 51s 4s/step - loss: 1.1921 - accuracy: 0.5988 - val_loss: 13.7688 - val_accuracy: 0.0475 - lr: 0.0010
+Epoch 5/50
+14/14 [==============================] - ETA: 0s - loss: 1.0416 - accuracy: 0.6493
+Epoch 5: val_loss improved from 13.76876 to 6.53537, saving model to best_model.h5
+14/14 [==============================] - 51s 4s/step - loss: 1.0416 - accuracy: 0.6493 - val_loss: 6.5354 - val_accuracy: 0.1398 - lr: 0.0010
+Epoch 6/50
+14/14 [==============================] - ETA: 0s - loss: 1.1044 - accuracy: 0.6237
+Epoch 6: val_loss did not improve from 6.53537
+14/14 [==============================] - 50s 4s/step - loss: 1.1044 - accuracy: 0.6237 - val_loss: 9.0393 - val_accuracy: 0.1152 - lr: 0.0010
+Epoch 7/50
+14/14 [==============================] - ETA: 0s - loss: 1.1079 - accuracy: 0.6331
+Epoch 7: val_loss improved from 6.53537 to 6.06433, saving model to best_model.h5
+14/14 [==============================] - 50s 4s/step - loss: 1.1079 - accuracy: 0.6331 - val_loss: 6.0643 - val_accuracy: 0.1185 - lr: 0.0010
+Epoch 8/50
+14/14 [==============================] - ETA: 0s - loss: 1.0340 - accuracy: 0.6467
+Epoch 8: val_loss improved from 6.06433 to 1.58077, saving model to best_model.h5
+14/14 [==============================] - 51s 4s/step - loss: 1.0340 - accuracy: 0.6467 - val_loss: 1.5808 - val_accuracy: 0.4632 - lr: 0.0010
+Epoch 9/50
+14/14 [==============================] - ETA: 0s - loss: 1.1008 - accuracy: 0.5916
+Epoch 9: val_loss did not improve from 1.58077
+14/14 [==============================] - 50s 4s/step - loss: 1.1008 - accuracy: 0.5916 - val_loss: 3.1614 - val_accuracy: 0.3021 - lr: 0.0010
+Epoch 10/50
+14/14 [==============================] - ETA: 0s - loss: 1.0307 - accuracy: 0.6298
+Epoch 10: val_loss did not improve from 1.58077
+14/14 [==============================] - 49s 4s/step - loss: 1.0307 - accuracy: 0.6298 - val_loss: 3.6437 - val_accuracy: 0.0750 - lr: 0.0010
+Epoch 11/50
+14/14 [==============================] - ETA: 0s - loss: 1.0641 - accuracy: 0.6350
+Epoch 11: val_loss did not improve from 1.58077
+14/14 [==============================] - 49s 4s/step - loss: 1.0641 - accuracy: 0.6350 - val_loss: 1.8701 - val_accuracy: 0.4624 - lr: 0.0010
+Epoch 12/50
+14/14 [==============================] - ETA: 0s - loss: 1.0497 - accuracy: 0.6207
+Epoch 12: val_loss did not improve from 1.58077
+14/14 [==============================] - 51s 4s/step - loss: 1.0497 - accuracy: 0.6207 - val_loss: 2.5573 - val_accuracy: 0.1377 - lr: 0.0010
+Epoch 13/50
+14/14 [==============================] - ETA: 0s - loss: 1.0099 - accuracy: 0.6540
+Epoch 13: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+
+Epoch 13: val_loss did not improve from 1.58077
+14/14 [==============================] - 50s 4s/step - loss: 1.0099 - accuracy: 0.6540 - val_loss: 1.8061 - val_accuracy: 0.4538 - lr: 0.0010
+Epoch 14/50
+14/14 [==============================] - ETA: 0s - loss: 0.9671 - accuracy: 0.6600
+Epoch 14: val_loss did not improve from 1.58077
+14/14 [==============================] - 50s 4s/step - loss: 0.9671 - accuracy: 0.6600 - val_loss: 1.8027 - val_accuracy: 0.4550 - lr: 1.0000e-04
+Epoch 15/50
+14/14 [==============================] - ETA: 0s - loss: 0.9499 - accuracy: 0.6689
+Epoch 15: val_loss did not improve from 1.58077
+14/14 [==============================] - 50s 4s/step - loss: 0.9499 - accuracy: 0.6689 - val_loss: 1.8169 - val_accuracy: 0.4550 - lr: 1.0000e-04
+Epoch 16/50
+14/14 [==============================] - ETA: 0s - loss: 0.9815 - accuracy: 0.6699
+Epoch 16: val_loss did not improve from 1.58077
+14/14 [==============================] - 51s 4s/step - loss: 0.9815 - accuracy: 0.6699 - val_loss: 1.8007 - val_accuracy: 0.4550 - lr: 1.0000e-04
+Epoch 17/50
+14/14 [==============================] - ETA: 0s - loss: 0.9527 - accuracy: 0.6805
+Epoch 17: val_loss did not improve from 1.58077
+14/14 [==============================] - 52s 4s/step - loss: 0.9527 - accuracy: 0.6805 - val_loss: 1.6917 - val_accuracy: 0.4550 - lr: 1.0000e-04
+Epoch 18/50
+14/14 [==============================] - ETA: 0s - loss: 0.9167 - accuracy: 0.6827Restoring model weights from the end of the best epoch: 8.
+
+Epoch 18: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
+
+Epoch 18: val_loss did not improve from 1.58077
+14/14 [==============================] - 50s 4s/step - loss: 0.9167 - accuracy: 0.6827 - val_loss: 1.7517 - val_accuracy: 0.4550 - lr: 1.0000e-04
+Epoch 18: early stopping
+1/1 [==============================] - 2s 2s/step - loss: 1.5808 - accuracy: 0.4632
+Validation Loss: 1.5807684659957886, Validation Accuracy: 0.46324360370635986
+Predicting on validation data...
+1/1 [==============================] - 3s 3s/step

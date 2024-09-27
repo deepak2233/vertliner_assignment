@@ -1,0 +1,33 @@
+# config.yaml
+
+dataset:
+  path: "data/Semantic-segmentation-dataset/Semantic segmentation dataset"
+  image_size: [256, 256]
+  train_split: 0.8
+  num_classes: 6
+
+augmentation:
+  rotation_range: 45
+  width_shift_range: 0.1
+  height_shift_range: 0.1
+  shear_range: 0.2
+  zoom_range: 0.2
+  horizontal_flip: true
+  vertical_flip: true
+  fill_mode: "reflect"
+
+model:
+  input_size: [256, 256, 3]
+  num_classes: 6
+  dropout: 0.5
+
+training:
+  batch_size: 4
+  epochs: 50
+  patience: 10
+  reduce_lr_patience: 5
+
+paths:
+  best_model: "output/logs/best_model.h5"
+  augmented_images: "output/augmented_images/"
+  predictions: "output/predictions/"
