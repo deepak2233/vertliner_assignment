@@ -116,6 +116,20 @@ streamlit run streamlit_app.py -- --config config.yaml --model_path output/logs/
   <img src="output/predictions/visualizing predictions vs ground truth.png" alt="UNet Architecture Overview" width="450"/>
 </p>
 
+---
+
+## <b>streamlit app Result</b>:
+
+<p align="center">
+  <img src="output/predictions/app_inference_ot.png" alt="UNet Architecture Overview" width="450" height="500"/>
+</p>
+
+<p align="center">
+  <img src="output/predictions/app_inf_otp.png" alt="UNet Architecture Overview" width="450" height="500"/>
+</p>
+
+---
+
 ### Key Points for improvement:
 1. **Inference Results**: Mentioned the current performance and challenges.
 2. **Training Improvements**: Suggested training for more epochs.
