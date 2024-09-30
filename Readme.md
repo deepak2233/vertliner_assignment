@@ -50,132 +50,72 @@ Understanding the dataset is the first step toward building a successful model. 
 ---
 ## <b>Architecture Overview:</b>
 
+```
 +---------------------------------------------+
-
-| Data Loading and Preprocessing |
-
-| - Load images and corresponding masks |
-
-| - Normalize and resize images and masks |
-
-| - Optional data augmentation |
-
+|         Data Loading and Preprocessing      |
+|  - Load images and corresponding masks      |
+|  - Normalize and resize images and masks    |
+|  - Optional data augmentation               |
 +---------------------------------------------+
-
-|
-
-V
-
-Input Image
-
-|
-
-V
-
+                      |
+                      V
+                Input Image
+                      |
+                      V
 +---------------------------------------------+
-
-| U-Net Encoder |
-
-| |
-
-| [Block 1] |
-
-| - Conv2D + ReLU |
-
-| - Conv2D + ReLU |
-
-| - MaxPooling2D |
-
-| |
-
-| [Block 2] |
-
-| - Conv2D + ReLU |
-
-| - Conv2D + ReLU |
-
-| - MaxPooling2D |
-
-| |
-
-| ... (Repeated blocks) |
-
-| |
-
-| [Block N] |
-
-| - Conv2D + ReLU |
-
-| - Conv2D + ReLU |
-
-| - MaxPooling2D |
-
+|               U-Net Encoder                 |
+|                                             |
+|  [Block 1]                                  |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
+|   - MaxPooling2D                            |
+|                                             |
+|  [Block 2]                                  |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
+|   - MaxPooling2D                            |
+|                                             |
+|  ... (Repeated blocks)                      |
+|                                             |
+|  [Block N]                                  |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
+|   - MaxPooling2D                            |
 +---------------------------------------------+
-
-|
-
-V
-
-Bottleneck Layer
-
-- Conv2D + ReLU
-
-- Conv2D + ReLU
-
-|
-
-V
-
+                      |
+                      V
+             Bottleneck Layer
+             - Conv2D + ReLU
+             - Conv2D + ReLU
+                      |
+                      V
 +---------------------------------------------+
-
-| U-Net Decoder |
-
-| |
-
-| [Up Block N] |
-
-| - UpSampling2D |
-
-| - Concatenate with Encoder Block N output |
-
-| - Conv2D + ReLU |
-
-| - Conv2D + ReLU |
-
-| |
-
-| ... (Repeated blocks) |
-
-| |
-
-| [Up Block 1] |
-
-| - UpSampling2D |
-
-| - Concatenate with Encoder Block 1 output |
-
-| - Conv2D + ReLU |
-
-| - Conv2D + ReLU |
-
+|               U-Net Decoder                 |
+|                                             |
+|  [Up Block N]                               |
+|   - UpSampling2D                            |
+|   - Concatenate with Encoder Block N output |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
+|                                             |
+|  ... (Repeated blocks)                      |
+|                                             |
+|  [Up Block 1]                               |
+|   - UpSampling2D                            |
+|   - Concatenate with Encoder Block 1 output |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
 +---------------------------------------------+
+                      |
+                      V
+              Output Layer
+            - Conv2D (1x1 kernel)
+            - Softmax Activation
+                      |
+                      V
+              Segmentation Map
 
-|
-
-V
-
-Output Layer
-
-- Conv2D (1x1 kernel)
-
-- Softmax Activation
-
-|
-
-V
-
-Segmentation Map
-
+```
 
 ---
 
