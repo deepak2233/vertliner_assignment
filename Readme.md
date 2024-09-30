@@ -50,13 +50,73 @@ Understanding the dataset is the first step toward building a successful model. 
 ---
 ## <b>Architecture Overview:</b>
 
-We use an advanced U-Net model with dropout and batch normalization. This architecture effectively captures both global context and fine details, making it suitable for pixel-level predictions in satellite imagery.
+```
++---------------------------------------------+
+|         Data Loading and Preprocessing      |
+|  - Load images and corresponding masks      |
+|  - Normalize and resize images and masks    |
+|  - Optional data augmentation               |
++---------------------------------------------+
+                      |
+                      V
+                Input Image
+                      |
+                      V
++---------------------------------------------+
+|               U-Net Encoder                 |
+|                                             |
+|  [Block 1]                                  |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
+|   - MaxPooling2D                            |
+|                                             |
+|  [Block 2]                                  |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
+|   - MaxPooling2D                            |
+|                                             |
+|  ... (Repeated blocks)                      |
+|                                             |
+|  [Block N]                                  |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
+|   - MaxPooling2D                            |
++---------------------------------------------+
+                      |
+                      V
+             Bottleneck Layer
+             - Conv2D + ReLU
+             - Conv2D + ReLU
+                      |
+                      V
++---------------------------------------------+
+|               U-Net Decoder                 |
+|                                             |
+|  [Up Block N]                               |
+|   - UpSampling2D                            |
+|   - Concatenate with Encoder Block N output |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
+|                                             |
+|  ... (Repeated blocks)                      |
+|                                             |
+|  [Up Block 1]                               |
+|   - UpSampling2D                            |
+|   - Concatenate with Encoder Block 1 output |
+|   - Conv2D + ReLU                           |
+|   - Conv2D + ReLU                           |
++---------------------------------------------+
+                      |
+                      V
+              Output Layer
+            - Conv2D (1x1 kernel)
+            - Softmax Activation
+                      |
+                      V
+              Segmentation Map
 
-- <b>Encoder:</b> Captures hierarchical features using convolutions and pooling layers.
+```
 
-- <b>Bottleneck:</b> Represents the most abstract features, useful for understanding complex patterns.
-
-- <b>Decoder:</b> Reconstructs the image while recovering spatial details through upsampling and concatenation with encoder features.
 ---
 
 <p align="center">
